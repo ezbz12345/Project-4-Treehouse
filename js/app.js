@@ -12,14 +12,7 @@ const lifeTotal = document.getElementsByClassName('tries');
 const qwertyKeys = document.querySelectorAll('.key');  
 const phraseUl =  document.getElementById('phrase_ul');
 const lifeTotalParent = lifeTotal.parent;
-let game;// = new Game();
-//theKeysAreAlive(game);
-// function initializeGame(){
-//     let game = new Game();
-//     game.startGame();
-   
-//     return game;
-// }; all trash
+let game;
 
 //start game button makes instance of Game class, calls startGame()  on that instance
 //sets that instance to the value for 'game' (global scope)
@@ -28,7 +21,7 @@ startGameButton.addEventListener('click', ()=>{
     activeGame.startGame()
     game = activeGame;});
 
-//add the guess event to each key. 
+//add the guess event (handle interaction) to each onscreen key. 
 qwertyDiv.addEventListener('click', (e)=>{
     const keyText = e.target.textContent;
     if(e.target.tagName === 'BUTTON'){
@@ -36,6 +29,7 @@ qwertyDiv.addEventListener('click', (e)=>{
     }
 })
 
+//add the guess event (handling interaction) to the keyboard. It behaves like psuedo click so we keep it simple. 
 document.addEventListener('keydown', (e)=>{
     let keyFind = e.key;
    
@@ -45,27 +39,3 @@ document.addEventListener('keydown', (e)=>{
             }
         })
     })
-
-//function theKeysAreAlive(game){
-    // for(i=0 ; i<keysArray.length ; i++){
-    //     keysArray[i].addEventListener('click', game.handleInteraction);
-    //     }
-    // }
-    
-    // undefined
-    // function handleThis(e){
-    //     let keyed = e.target.textContent;
-    //     if(bigTimeCheck.checkLetter(keyed)===true){
-    //         bigTimeCheck.showMatchedLetter(keyed)}}
-
-// function letTheKeysLive(){
-//     for(i=0 ; i<keysArray.length ; i++){
-//         keysArray[i].addEventListener('click', checkLetter);
-//     }
-    
-// }
-// function seeIfWorks(e){
-//     let ass = e.target.textContent;
-//     let beenus = document.querySelectorAll('.letter')[0];
-//     if(ass ==  beenus.textContent){beenus.classList.add('.show')}
-//     console.log(ass)};

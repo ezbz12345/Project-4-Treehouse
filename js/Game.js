@@ -22,10 +22,10 @@
          this.activePhrase = gamePhrase; 
         }
     getRandomPhrase(){
-            var whichP = Math.floor(this.phrases.length*Math.random());
-            //this.activePhrase = this.phrases[whichP];
-            return this.phrases[whichP];
-         }
+        var whichP = Math.floor(this.phrases.length*Math.random());
+        return this.phrases[whichP];
+        }
+    //shows letters, disables key buttons including keyboard, updates life total, ends game if over, AND makes fun sounds. 
     handleInteraction(letter){        
         if(this.activePhrase.checkLetter(letter)){
             this.activePhrase.showMatchedLetter(letter);
@@ -41,21 +41,15 @@
             }
         }
         }
-         //disable selected letter's onscreen  keyboard button
-         //if  phrase no contain letter, add 'wrong' class  & remove life
-         /*if  phrase yes contain, add 'chosen' class, call 'showMatchLetter()', call  'checkForWin()'
-     if win call gameOver()}*/
     removeLife(){
         lifeTotal[this.missed].childNodes[0].src = "images/lostHeart.png";
         this.missed += 1;
-        //lifeTotal[0].remove();
-
-    }
+        }
     checkForWin(){
         var lettersAll = document.querySelectorAll('.letter');
         var lettersGot = document.querySelectorAll('.show');
         if(lettersAll.length === lettersGot.length){return true;}
-    }
+        }
     gameOver(winOrLose){ 
         if(winOrLose  === "lose"){
             endMsgContainer.innerHTML = 'Your letter guessing life force hath been vanquished...';

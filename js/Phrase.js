@@ -7,22 +7,19 @@ class Phrase {
         this.phrase = phrase.toLowerCase();
        
         }
+
+        //creates and adds phrase to the DOM
         addPhraseToDisplay(){
-             
              for(let i = 0 ;  i < this.phrase.length ; i++){
                 var liMaker = document.createElement('li');
                 var y = i;
                 if(this.phrase.charAt(y) === " "){
                    liMaker.classList.add("space")
-                  // liMaker.innerText = " "
                    }else{liMaker.classList.add("letter")
                         liMaker.innerText = `${this.phrase.charAt(i)}`}
-                //liMaker.textContent = this.phrase.charAt(y);
                 phraseUl.appendChild(liMaker);}}
+        //checks letter and adds classes for css styling for whether the guess was correct or not. also disables the guessed key. 
         checkLetter(letter){
-           //let wordPart = e.target.textContent; do it their way
-           
-           //for(let  i = 0; i<lettersArray.length ; i++){ cancel to do it their way
               if(this.phrase.includes(letter)){
                  //lettersArray[i].classList.add("show");
                  for(let i = 0 ; i < qwertyKeys.length ; i++){
@@ -37,7 +34,7 @@ class Phrase {
                      qwertyKeys[i].disabled = 'true';
               }}
            }}
-        
+        //removes the veil in front of mystery letter by adding .show -> see css class. 
         showMatchedLetter(letter){
           let phraseArray = document.querySelectorAll('.letter'); 
           if(this.checkLetter(letter) === true){ 
