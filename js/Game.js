@@ -30,22 +30,32 @@
         if(this.activePhrase.checkLetter(letter)){
             this.activePhrase.showMatchedLetter(letter);
             guessHit.play(); // sound effect for good guess
+            for(let i = 0 ; i < qwertyKeys.length ; i++){
+                if (letter == qwertyKeys[i].textContent){
+                   qwertyKeys[i].classList.add('chosen');
+                   qwertyKeys[i].disabled = 'true';
+                }}
             if(this.checkForWin()){
                 this.gameOver("win")
                 }
         }else{
             guessMiss.play() // sound effect for whiffing on your guess
+            for(let i = 0 ; i < qwertyKeys.length ; i++){
+                if (letter == qwertyKeys[i].textContent){
+                   qwertyKeys[i].classList.add('wrong');
+                   qwertyKeys[i].disabled = 'true';
+            }}
             this.removeLife();
-            if(this.missed === 5){
-                this.gameOver("lose");
-            }
         }
         }
-    removeLife(){
+    removeLife(){ //replaces heart icon with empty heart outline, then checks for a loss. 
         lifeTotal[this.missed].childNodes[0].src = "images/lostHeart.png";
         this.missed += 1;
+        if(this.missed === 5){
+            this.gameOver("lose");
         }
-    checkForWin(){
+        }
+    checkForWin(){//shows the letter(s) in the phrase, then checks for a win
         var lettersAll = document.querySelectorAll('.letter');
         var lettersGot = document.querySelectorAll('.show');
         if(lettersAll.length === lettersGot.length){return true;}

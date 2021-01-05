@@ -21,19 +21,9 @@ class Phrase {
         //checks letter and adds classes for css styling for whether the guess was correct or not. also disables the guessed key. 
         checkLetter(letter){
               if(this.phrase.includes(letter)){
-                 //lettersArray[i].classList.add("show");
-                 for(let i = 0 ; i < qwertyKeys.length ; i++){
-                  if (letter == qwertyKeys[i].textContent){
-                     qwertyKeys[i].classList.add('chosen');
-                     qwertyKeys[i].disabled = 'true';
-                  }}
+                 //lettersArray[i].classList.add("show");                 
                  return true;
-              }else{for(let i = 0 ; i < qwertyKeys.length ; i++){
-                  if (letter == qwertyKeys[i].textContent){
-                     qwertyKeys[i].classList.add('wrong');
-                     qwertyKeys[i].disabled = 'true';
               }}
-           }}
         //removes the veil in front of mystery letter by adding .show -> see css class. 
         showMatchedLetter(letter){
           let phraseArray = document.querySelectorAll('.letter'); 
